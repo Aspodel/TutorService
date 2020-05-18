@@ -1,0 +1,145 @@
+.login {
+  position: relative;
+  height: 100vh;
+  width: 100vw;
+  text-align: center;
+  margin: auto;
+
+  .box {
+    display: inline-block;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    height: 80%;
+    width: 30%;
+    border-radius: 5%;
+    @include neumorphism;
+
+    .logo {
+      display: none;
+      text-align: left;
+    }
+
+    .giasu {
+      margin-top: 18%;
+      font-size: 60px;
+      // font-weight: 400;
+      letter-spacing: 5px;
+      @include text-color;
+      text-align: center;
+    }
+
+    .form {
+      position: relative;
+      width: 100%;
+      display: grid;
+      grid-auto-rows: auto;
+      margin: auto;
+      margin-top: 10%;
+      place-items: center;
+      background: none;
+
+      .field {
+        position: relative;
+        width: 60%;
+
+        label {
+          position: absolute;
+          top: 33px;
+          left: 0;
+          background: none;
+          touch-action: manipulation;
+          color: $grey-text;
+          transition: 0.2s linear;
+          // font-size: 18px;
+          cursor: text;
+        }
+      }
+
+      input:not([type="submit"]) {
+        display: inline-block;
+        width: 100%;
+        padding: 11px 0px;
+        margin: 25px 0px;
+        box-sizing: border-box;
+        border: 0 none #ccc;
+        border-bottom: 1px solid $grey-text;
+        border-radius: 0;
+
+        &:focus {
+          color: $grey-text;
+          outline: none;
+          outline-color: transparent;
+          // box-shadow: 0px 0px 0px 0px #fff9, 0px 0px 0px 0px #fff9,
+          //   0px 0px 0px 0px #0001, 0px 0px 0px 0px #0001,
+          //   inset -2px -2px 2px 0px #fff9, inset -2px -2px 4px 0px #fff9,
+          //   inset 2px 2px 2px 0px #0003, inset 2px 2px 4px 0px #0001;
+        }
+        &::placeholder {
+          color: $back-ground;
+        }
+
+        &:focus ~ label {
+          top: 10px;
+          color: #00c2e7;
+          font-size: 14px;
+          // font-weight: 500;
+        }
+
+        &:not(:placeholder-shown) {
+          border-color: hsl(0, 76%, 50%);
+          color: $grey-text;
+        }
+
+        &:not(:placeholder-shown) ~ label {
+          top: 10px;
+          color: #00c2e7;
+          font-size: 14px;
+          // font-weight: 500;
+        }
+
+        &:valid {
+          // border-color: hsl(120, 76%, 50%);
+          border-bottom: 1px solid $grey-text;
+        }
+      }
+
+      .submit {
+        font-size: 18px;
+        font-weight: 600;
+        border: none;
+        border-radius: 35px;
+        @include text-color;
+        padding: 11px 5px;
+        margin: 20px;
+        margin-top: 40px;
+        width: 25%;
+        @include neumorphism;
+        transition: box-shadow 0.1s linear;
+        cursor: pointer;
+        transition: all 0.2s ease-out;
+        &:focus {
+          border: none;
+          outline: none;
+          outline-color: transparent;
+          box-shadow: 0px 0px 0px 0px #fff9, 0px 0px 0px 0px #fff9,
+            0px 0px 0px 0px #0001, 0px 0px 0px 0px #0001,
+            inset -3px -3px 3px 0px #fff9, inset -3px -3px 3px 0px #fff9,
+            inset 3px 3px 3px 0px #0003, inset 3px 3px 3px 0px #0001;
+        }
+      }
+    }
+
+    .navi-register {
+      position: relative;
+      margin-top: 50px;
+
+      a {
+        color: #00c2e7;
+        // font-weight: 500;
+        text-decoration: none;
+      }
+    }
+  }
+}

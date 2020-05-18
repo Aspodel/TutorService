@@ -1,0 +1,388 @@
+.UI {
+  position: relative;
+  height: auto;
+  width: 100%;
+
+  // .navbar {
+  //   position: relative;
+  //   min-height: 9vh;
+  //   width: 100%;
+  //   @include neumorphism;
+  //   display: grid;
+  //   grid-template-columns: 1.5fr 7fr 1.5fr;
+  //   text-align: center;
+  //   align-items: center;
+  //   justify-content: center;
+  //   z-index: 1;
+
+  //   .Giasu {
+  //     font-size: 36px;
+  //     font-weight: 500;
+  //     @include text-color;
+  //     letter-spacing: 1.5px;
+  //     cursor: pointer;
+  //   }
+
+  //   .search {
+  //     margin: auto;
+  //     display: flex;
+  //     text-align: center;
+  //     align-items: center;
+  //     justify-content: center;
+  //     width: 100%;
+
+  //     .icon {
+  //       color: $grey-text;
+  //       font-size: 20px;
+  //       margin-right: 1vw;
+  //     }
+
+  //     input {
+  //       width: 50%;
+  //       letter-spacing: 1.2px;
+  //       font-size: 16px;
+  //       padding: 8px 10px;
+  //       box-sizing: border-box;
+  //       border: 0 none #ccc;
+  //       border-bottom: 1px solid $grey-text;
+  //       border-radius: 0;
+  //       text-transform: capitalize;
+
+  //       &::placeholder {
+  //         letter-spacing: 1.5px;
+  //         font-size: 16px;
+  //         text-transform: none;
+  //       }
+
+  //       &:focus {
+  //         border: none;
+  //         outline: none;
+  //         outline-color: transparent;
+  //         box-shadow: 0px 0px 0px 0px #fff9, 0px 0px 0px 0px #fff9,
+  //           0px 0px 0px 0px #0001, 0px 0px 0px 0px #0001,
+  //           inset -2px -2px 2px 0px #fff9, inset -2px -2px 4px 0px #fff9,
+  //           inset 2px 2px 2px 0px #0003, inset 2px 2px 4px 0px #0001;
+  //       }
+  //     }
+  //   }
+
+  //   .user {
+  //     height: 100%;
+  //     // position: relative;
+  //     display: flex;
+  //     align-items: center;
+  //     margin-right: 2vw;
+  //     cursor: pointer;
+  //     justify-self: end;
+
+  //     &:hover {
+  //       .manage {
+  //         display: inline;
+  //       }
+  //     }
+
+  //     .username {
+  //       margin-right: 1vw;
+  //       font-size: 20px;
+  //     }
+
+  //     .profile {
+  //       height: 42px;
+  //       width: 42px;
+  //       padding: 5px;
+  //       margin: 2px;
+  //       margin-right: 25px;
+  //       border: 1px solid none;
+  //       border-radius: 50%;
+  //       background: $back-ground;
+  //       box-shadow: 0px 0px 0px 0px #fff9, 0px 0px 0px 0px #fff9,
+  //         0px 0px 0px 0px #0001, 0px 0px 0px 0px #0001,
+  //         inset -2px -2px 3px 0px #fff9, inset -2px -2px 4px 0px #fff9,
+  //         inset 2px 2px 3px 0px #0003, inset 2px 2px 4px 0px #0001;
+  //     }
+
+  //     .manage {
+  //       z-index: 3;
+  //       display: none;
+  //       position: absolute;
+  //       top: 100%;
+  //       right: 55px;
+  //       width: 180px;
+  //       text-align: start;
+  //       border-radius: 0 0 8px 8px;
+  //       box-shadow: -2px -2px 2px 0px #fff9, -1px -1px 2px 0px #fff9,
+  //         7px 7px 20px 0px #0002, 4px 4px 5px 0px #0001,
+  //         inset 0px 0px 0px 0px #fff9, inset 0px 0px 0px 0px #0001,
+  //         inset 0px 0px 0px 0px #fff9, inset 0px 0px 0px 0px #0001;
+
+  //       div {
+  //         background: none;
+  //         margin-bottom: 10px;
+  //         padding: 10px;
+  //         padding-left: 25px;
+
+  //         &:hover {
+  //           // background: $grey-text;
+  //           background: linear-gradient(
+  //             to top right,
+  //             #36d1dc,
+  //             #00c2e7,
+  //             #00b1ef,
+  //             #0c9def,
+  //             #5b86e5
+  //           );
+  //         }
+  //       }
+  //       a {
+  //         color: #000000;
+  //         text-decoration: none;
+  //       }
+
+  //       .logout {
+  //         margin-bottom: 0;
+  //         border-radius: 0 0 8px 8px;
+  //       }
+  //     }
+  //   }
+  // }
+
+  .requirement-table {
+    /* --------------------------Waiting to unlock---------------------------- */
+    display: grid;
+    grid-template-columns: 7.5fr 2.5fr;
+    /* ----------------------------------------------------------------------- */
+
+    cursor: default;
+    position: relative;
+
+    .subject-requirement {
+      position: relative;
+      width: 100%;
+      // height: 100%;
+
+      .header {
+        text-align: center;
+        letter-spacing: 3px;
+        font-size: 30px;
+        padding-top: 20px;
+      }
+
+      .lottie {
+        height: 80%;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+      }
+
+      .requirement-card {
+        position: relative;
+        display: grid;
+        grid-template-columns: repeat(auto-fit, 350px);
+        grid-template-rows: auto;
+        width: 100%;
+        margin: auto;
+        justify-content: center;
+        padding: 10px 0;
+
+        .card {
+          position: relative;
+          display: grid;
+          grid-template-rows: repeat(5, 1fr);
+          grid-template-columns: 3fr 8fr;
+          border-radius: 15px;
+          height: 120px;
+          width: 310px;
+          margin: 20px;
+          @include neumorphism;
+          align-items: center;
+          transition: all 0.2s ease-out;
+          cursor: pointer;
+
+          &:hover {
+            box-shadow: 0px 0px 0px 0px #fff9, 0px 0px 0px 0px #fff9,
+              0px 0px 0px 0px #0001, 0px 0px 0px 0px #0001,
+              inset -3px -3px 5px 0px #fff9, inset -3px -3px 4px 0px #fff9,
+              inset 3px 3px 5px 0px #0003, inset 3px 3px 4px 0px #0001;
+
+            .subject {
+              margin-top: 0;
+              transition: all 0.4s ease-out;
+            }
+
+            .username {
+              display: inline-block;
+              transition: display 0.3s ease-out;
+            }
+
+            .contact {
+              display: inline-block;
+              background: none;
+              margin-bottom: 5px;
+              margin-right: 10px;
+              transition: all 0.3s ease-out;
+            }
+          }
+
+          .profile-img {
+            position: relative;
+            width: 100%;
+            height: 100%;
+            border-radius: 5px;
+            grid-row-end: span 5;
+            background: none;
+
+            .profile {
+              position: absolute;
+              top: 50%;
+              left: 50%;
+              transform: translate(-50%, -50%);
+              object-fit: cover;
+              vertical-align: middle;
+              margin: auto;
+
+              height: 60px;
+              width: 60px;
+              border-radius: 50%;
+              padding: 7px;
+              box-shadow: 0px 0px 0px 0px #fff9, 0px 0px 0px 0px #fff9,
+                0px 0px 0px 0px #0001, 0px 0px 0px 0px #0001,
+                inset -2px -2px 3px 0px #fff9, inset -2px -2px 4px 0px #fff9,
+                inset 2px 2px 3px 0px #0003, inset 2px 2px 4px 0px #0001;
+            }
+          }
+
+          .date-submitted {
+            text-align: right;
+            margin-right: 15px;
+            margin-top: 10px;
+            font-size: 12px;
+            color: $grey-text;
+            background: none;
+            transition: all 0.5s ease-out;
+          }
+
+          .subject {
+            margin-top: 15px;
+            font-size: 20px;
+            background: none;
+
+            transition: all 0.5s ease-out;
+          }
+
+          .school {
+            font-size: 14px;
+            color: $grey-text;
+            background: none;
+
+            transition: all 0.5s ease-out;
+          }
+
+          .username {
+            display: none;
+            background: none;
+            font-size: 14px;
+
+            transition: all 0.5s ease-out;
+          }
+
+          .contact {
+            display: none;
+            grid-row: 5;
+            grid-column: 2;
+            text-align: right;
+            background: none;
+            color: $grey-text;
+            font-size: 12px;
+
+            transition: all 0.2s ease-out;
+
+            // a {
+            //   margin-right: 20px;
+            //   color: #00c2e7;
+            //   background: none;
+            // }
+          }
+        }
+      }
+    }
+
+    .my-requirement {
+      /* --------------------------Waiting to unlock---------------------------- */
+      // display: none;
+      /* ---------------------------------------------------------------------- */
+      width: 100%;
+      border: none;
+      .header {
+        width: 100%;
+        text-align: center;
+        letter-spacing: 2px;
+        font-size: 30px;
+        padding-top: 20px;
+      }
+
+      .requirement-card {
+        position: relative;
+        display: grid;
+        grid-template-columns: repeat(auto-fit, 350px);
+        grid-template-rows: auto;
+        margin: auto;
+        justify-content: center;
+        border: none;
+        width: 100%;
+        min-height: 80vh;
+        border-left: 1.5px solid $grey-text;
+
+        a {
+          text-decoration: none;
+
+          &:active {
+            .new-card {
+              box-shadow: 0px 0px 0px 0px #fff9, 0px 0px 0px 0px #fff9,
+                0px 0px 0px 0px #0001, 0px 0px 0px 0px #0001,
+                inset -3px -3px 5px 0px #fff9, inset -3px -3px 4px 0px #fff9,
+                inset 3px 3px 5px 0px #0003, inset 3px 3px 4px 0px #0001;
+            }
+          }
+        }
+
+        .new-card {
+          position: relative;
+          border-radius: 15px;
+          height: 120px;
+          width: 310px;
+          margin: 20px;
+          @include neumorphism;
+          display: flex;
+          align-items: center;
+          justify-content: center;
+          font-size: 20px;
+          cursor: pointer;
+          color: $grey-text;
+          transition: all 0.2s ease-out;
+
+          &:hover {
+            color: #000000d5;
+          }
+
+          span {
+            height: 35px;
+            width: 35px;
+            font-size: 30px;
+            border-radius: 50%;
+            line-height: 100%;
+            text-align: center;
+            margin-right: 8px;
+            background: linear-gradient(
+              to right,
+              #36d1dc,
+              #00c2e7,
+              #00b1ef,
+              #0c9def,
+              #5b86e5
+            );
+          }
+        }
+      }
+    }
+  }
+}

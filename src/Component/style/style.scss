@@ -1,0 +1,65 @@
+$back-ground: #f1f3f6;
+$grey-text: #818a89;
+
+@mixin text-color {
+  // background-image: linear-gradient(
+  //   to right,
+  //   #2193b0 30%,
+  //   #37dbe0 60%,
+  //   #6dd5ed 80%
+  // );
+  background-image: linear-gradient(
+    to right,
+    #36d1dc 20%,
+    #00c2e7 40%,
+    #00b1ef 60%,
+    #0c9def 80%,
+    #5b86e5 90%
+  );
+  color: transparent;
+  background-clip: text;
+}
+
+@mixin neumorphism {
+  box-shadow: -7px -7px 20px 0px #fff9, -4px -4px 5px 0px #fff9,
+    7px 7px 20px 0px #0002, 4px 4px 5px 0px #0001, inset 0px 0px 0px 0px #fff9,
+    inset 0px 0px 0px 0px #0001, inset 0px 0px 0px 0px #fff9,
+    inset 0px 0px 0px 0px #0001;
+}
+@mixin inner-neumorphism {
+  box-shadow: 0px 0px 0px 0px #fff9, 0px 0px 0px 0px #fff9,
+    0px 0px 0px 0px #0001, 0px 0px 0px 0px #0001, inset -7px -7px 20px 0px #fff9,
+    inset -4px -4px 5px 0px #fff9, inset 7px 7px 20px 0px #0003,
+    inset 4px 4px 5px 0px #0001;
+}
+
+html {
+  scroll-behavior: smooth;
+  -webkit-user-select: none;
+  -khtml-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  -o-user-select: none;
+  user-select: none;
+}
+
+::-webkit-scrollbar {
+  width: 0;
+  height: 0;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+  background: #f1f3f6;
+}
+
+@import "./ui";
+@import "./login";
+// @import "./form";
+@import "./register";
+@import "./test";
+@import "./requestDetail";
+@import "./menu";
+@import "./navbar";

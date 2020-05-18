@@ -1,0 +1,240 @@
+.register,
+.create-request {
+  position: absolute;
+  top: 0;
+  left: 0;
+  height: 100vh;
+  width: 100vw;
+  display: flex;
+  // min-height: 750px;
+
+  .box {
+    margin: auto;
+    position: relative;
+    height: 80%;
+    width: 50%;
+    border-radius: 3%;
+    @include neumorphism;
+
+    .lottie {
+      position: absolute;
+      top: 0;
+      right: 5%;
+      height: 100%;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    }
+
+    .giasu {
+      margin-top: 5%;
+      margin-left: 5%;
+      font-size: 24px;
+      font-weight: 500;
+      letter-spacing: 2px;
+      @include text-color;
+      background-image: linear-gradient(
+        to right,
+        #36d1dc 0%,
+        #00c2e7 2%,
+        #00b1ef 4%,
+        #0c9def 6%,
+        #5b86e5 10%
+      );
+      text-align: left;
+    }
+
+    .intro {
+      font-size: 24px;
+      margin-top: 1%;
+      margin-left: 5%;
+      text-align: left;
+    }
+
+    .form {
+      width: 50%;
+      height: 50%;
+      display: grid;
+      grid-template-columns: 1fr;
+      grid-template-rows: 1fr 1fr 1fr;
+      text-align: left;
+      background: none;
+      margin-left: 5%;
+      margin-top: 3%;
+
+      .field {
+        position: relative;
+        width: 100%;
+
+        label {
+          position: absolute;
+          top: 33px;
+          left: 0;
+          background: none;
+          touch-action: manipulation;
+          color: $grey-text;
+          transition: 0.2s linear;
+          font-size: 15px;
+          cursor: text;
+        }
+
+        input {
+          width: 100%;
+          padding: 11px 0;
+          margin: 25px 0;
+          box-sizing: border-box;
+          border: 0 none #ccc;
+          border-bottom: 1px solid $grey-text;
+          border-radius: 0;
+          letter-spacing: 1px;
+
+          &:focus {
+            color: $grey-text;
+            outline: none;
+            outline-color: transparent;
+            transition: all 0.2s ease-out;
+            // box-shadow: 0px 0px 0px 0px #fff9, 0px 0px 0px 0px #fff9,
+            //   0px 0px 0px 0px #0001, 0px 0px 0px 0px #0001,
+            //   inset -2px -2px 2px 0px #fff9, inset -2px -2px 4px 0px #fff9,
+            //   inset 2px 2px 2px 0px #0003, inset 2px 2px 4px 0px #0001;
+          }
+          &::placeholder {
+            color: $back-ground;
+          }
+
+          &:focus ~ label,
+          &:not(:placeholder-shown) ~ label {
+            top: 10px;
+            color: #00c2e7;
+            font-size: 12px;
+            // font-weight: 500;
+            transition: all 0.2s ease-out;
+          }
+
+          &:not(:placeholder-shown) {
+            border-color: hsl(0, 76%, 50%);
+            color: $grey-text;
+          }
+
+          // &:not(:placeholder-shown) ~ label {
+          //   top: 10px;
+          //   color: #00c2e7;
+          //   font-size: 12px;
+          //   // font-weight: 500;
+          // }
+
+          &:valid {
+            // border-color: hsl(120, 76%, 50%);
+            border-bottom: 1px solid $grey-text;
+          }
+        }
+      }
+
+      .div2 {
+        width: 100%;
+        position: relative;
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        grid-column-gap: 10%;
+      }
+
+      .div3 {
+        width: 100%;
+        position: relative;
+        display: grid;
+        grid-template-columns: 1fr 1fr 1fr;
+        grid-column-gap: 10%;
+      }
+
+      .radio {
+        width: 100%;
+        position: relative;
+        display: grid;
+        grid-template-columns: 1fr 1fr 1fr;
+        grid-column-gap: 10%;
+        padding: 11px 0;
+        margin: 20px 0 5px 0;
+        align-items: center;
+        align-content: center;
+
+        .heading {
+          letter-spacing: 1px;
+        }
+        .radio-div {
+          color: $grey-text;
+          label {
+            margin-left: 10px;
+          }
+        }
+      }
+    }
+
+    .off {
+      display: none;
+    }
+
+    .option {
+      position: absolute;
+      bottom: 7%;
+      width: 50%;
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      text-align: left;
+      background: none;
+      margin-left: 5%;
+      align-items: center;
+
+      a {
+        text-decoration: none;
+        color: #00c2e7;
+      }
+
+      #next {
+        padding: 10px 20px;
+        font-size: 14px;
+        font-weight: 500;
+        color: #00c2e7;
+        border: none;
+        border-radius: 5px;
+        justify-self: end;
+        cursor: pointer;
+        box-shadow: -4px -4px 10px 0px #fff9, -3px -3px 4px 0px #fff9,
+          4px 4px 10px 0px #0002, 3px 3px 4px 0px #0001,
+          inset 0px 0px 0px 0px #fff9, inset 0px 0px 0px 0px #0001,
+          inset 0px 0px 0px 0px #fff9, inset 0px 0px 0px 0px #0001;
+
+        &:active {
+          border: none;
+          outline: none;
+          box-shadow: 0px 0px 0px 0px #fff9, 0px 0px 0px 0px #fff9,
+            0px 0px 0px 0px #0001, 0px 0px 0px 0px #0001,
+            inset -2px -2px 2px 0px #fff9, inset -2px -2px 4px 0px #fff9,
+            inset 2px 2px 2px 0px #0003, inset 2px 2px 4px 0px #0001;
+        }
+
+        &:focus {
+          border: none;
+          outline: none;
+        }
+
+        &:hover {
+          transform: scale(1.05);
+        }
+      }
+      #back {
+        font-size: 14px;
+        font-weight: 500;
+        color: #00c2e7;
+        justify-self: start;
+        box-shadow: none;
+        cursor: pointer;
+        border: none;
+        border-radius: 5px;
+        &:focus {
+          border: none;
+          outline: none;
+        }
+      }
+    }
+  }
+}
