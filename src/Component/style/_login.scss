@@ -105,6 +105,14 @@
         }
       }
 
+      .noti{
+        width: 60%;
+        color: hsl(0, 100%, 63%);
+        display: flex;
+        justify-content: center;
+        align-items: center;
+      }
+
       .submit {
         font-size: 18px;
         font-weight: 600;

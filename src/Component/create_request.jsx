@@ -116,6 +116,8 @@ class CreateRequest extends Component {
                 placeholder="price"
                 spellCheck="false"
                 required
+                step="5000"
+                min="5000"
               />
               <label onClick={() => document.getElementById("price").focus()}>
                 Price

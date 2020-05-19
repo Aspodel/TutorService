@@ -20,10 +20,7 @@ class Menu extends Component {
         item[i].style.borderImageSource =
           "linear-gradient(to bottom,#36d1dc, #00c2e7,#00b1ef, #0c9def,#5b86e5)";
         item[i].style.borderImageSlice = "1";
-        // item[i].style.fontSize = "17px";
-      } /* else {
-        item[i].style.borderRight = "none";
-      } */
+      }
     }
   }
 
@@ -32,9 +29,15 @@ class Menu extends Component {
   };
 
   render() {
+    console.log(this.props.isClicked);
     return (
       <div className={this.props.isClicked ? "menu-bar" : "menu-bar menuoff"}>
-        <div className={this.props.isClicked ? "left " : "left off"}>
+        <div
+          onClick={this.closeMenu}
+          className={this.props.isClicked ? "cover" : "cover coveroff"}
+        ></div>
+
+        <div className={this.props.isClicked ? "content " : "content off"}>
           <div onClick={this.closeMenu} className="close">
             <FontAwesomeIcon className="icon" icon={faTimes} />
           </div>
@@ -69,7 +72,10 @@ class Menu extends Component {
           </div>
         </div>
 
-        <div onClick={this.closeMenu} className={this.props.isClicked? "right" :"right rightoff"}></div>
+        {/* <div
+          onClick={this.closeMenu}
+          className={this.props.isClicked ? "right" : "right rightoff"}
+        ></div> */}
       </div>
     );
   }

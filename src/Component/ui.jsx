@@ -36,7 +36,7 @@ class UI extends Component {
   };
 
   async componentDidMount() {
-    // document.title = "Gia Sư | Subject Request";
+    document.title = "Gia Sư | Subject Request";
     const url = "https://localhost:44316/api/SubjectControllers/RequestPage/0";
     const response = await fetch(url);
     const data = await response.json();
@@ -146,33 +146,6 @@ class UI extends Component {
     return (
       <div className="UI">
         <Navbar search={this.state.search} />
-        {/* <div className="navbar">
-          <div className="Giasu">Gia Sư</div>
-          <div className="search">
-            <FontAwesomeIcon className="icon" icon={faSearch} />
-            <input
-              type="text"
-              placeholder="Search subject here"
-              spellCheck="false"
-            />
-          </div>
-          <div className="user">
-            <div className="username"> */}
-        {/* {match.params.name} */}
-        {/* {location.state.name} */}
-        {/* Hi
-            </div>
-            <img className="profile" src={boy} alt="profile" />
-            <div className="manage">
-              <div>Notifications</div>
-              <div>Profile</div>
-              <div>Settings</div>
-              <a href="/">
-                <div className="logout">Log out </div>
-              </a>
-            </div>
-          </div>
-        </div> */}
 
         <div className="requirement-table">
           <div className="subject-requirement">

@@ -15,37 +15,31 @@ class Login extends Component {
   handleSubmit = async (event) => {
     event.preventDefault();
     var apiUrl = "https://localhost:44316/api/LoginRegister/";
-    await axios
-      .post(apiUrl + "Login", {
-        Email: document.getElementById("email").value,
-        Pass: document.getElementById("password").value,
-      })
-      .then((response) => {
-        if (response.status === 200) {
-          this.setState({ noti: "Successful" });
-          // axios
-          //   .get(apiUrl + "GetUserInfo", {
-          //     headers: { Authorization: `Bearer ${response.data.token}` },
-          //   })
-          //   .then((result) => {
-          //     this.setState({ name: result.data.userName });
-          //     this.props.history.push(
-          //       /* `/ui/${result.data.userName}` */ {
-          //         pathname: "/ui",
-          //         // search: "?query=abc",
-          //         state: { name: result.data.userName },
-          //       }
-          //     );
-          //   });
-          this.props.history.push(
-            /* `/ui/${result.data.userName}` */ {
+
+    try {
+      await axios
+        .post(apiUrl + "Login", {
+          Email: document.getElementById("email").value,
+          Pass: document.getElementById("password").value,
+        })
+        .then((response) => {
+          // console.log("api out" + this.state.noti);
+          console.log(response.statusText);
+          console.log(response.status);
+          console.log(response.data);
+          if (response.status === 200) {
+            this.props.history.push({
               pathname: "/ui",
               // search: "?query=abc",
               state: { token: response.data.token },
-            }
-          );
-        }
-      });
+            });
+          }
+        });
+    } catch (err) {
+      console.log(err);
+      console.log("hey yo");
+      this.setState({ noti: "Incorrect username or password" });
+    }
   };
 
   render() {
@@ -88,9 +82,11 @@ class Login extends Component {
               </label>
             </div>
 
-            <input className="submit" type="submit" value="Login" />
+            <div className="noti">
+              <span>{this.state.noti}</span>
+            </div>
 
-            <div className="noti">{this.state.noti}</div>
+            <input className="submit" type="submit" value="Login" />
           </form>
 
           <div className="navi-register">

@@ -17,7 +17,7 @@ const routs = (
   <BrowserRouter>
     <Switch>
       <Route exact path="/" component={App} />
-      <Route path="/ui" /* title="Gia Sư | Subject Request" */ component={UI} />
+      <Route path="/ui" component={UI} />
       <Route path="/register" component={Register} />
       <Route path="/test" component={Test} />
       <Route path="/newrequest" component={CreateRequest} />
