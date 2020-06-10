@@ -1,6 +1,7 @@
 import React, { Component } from "react";
 import axios from "axios";
 import { withRouter } from "react-router-dom";
+import Logo from "../Component/image/logo.png";
 
 class Login extends Component {
   state = {
@@ -45,7 +46,7 @@ class Login extends Component {
     return (
       <div className="login">
         <div className="box">
-          <div className="logo">Logo</div>
+          <img src={Logo} alt="" className="logo"></img>
           <div className="giasu">Gia Sư</div>
 
           <form className="form" onSubmit={this.handleSubmit}>
@@ -72,7 +73,7 @@ class Login extends Component {
                 autoComplete="off"
                 name="Pass"
                 required
-                pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,}"
+                pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{6,}"
               />
               <label
                 onClick={() => document.getElementById("password").focus()}

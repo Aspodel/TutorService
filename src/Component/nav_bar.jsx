@@ -1,12 +1,13 @@
 import React, { Component } from "react";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faSearch, faBars } from "@fortawesome/free-solid-svg-icons";
-import boy from "./image/boy.png";
+// import boy from "./image/boy.png";
 import Menu from "./menu";
 import axios from "axios";
+import Logo from "../Component/image/logo.png"
 
 class NavBar extends Component {
-  state = { isClicked: false, name: "" };
+  state = { isClicked: false, data: []};
 
   componentDidMount() {
     axios
@@ -14,7 +15,7 @@ class NavBar extends Component {
         headers: { Authorization: `Bearer ${this.props.token}` },
       })
       .then((result) => {
-        this.setState({ name: result.data.userName });
+        this.setState({ data: result.data });
         // console.log(result.data.userName);
         // console.log(this.state.name);
       });
@@ -50,14 +51,14 @@ class NavBar extends Component {
               />
             </div>
           ) : (
-            <div className="Giasu">Gia Sư</div>
+            <img src={Logo} alt="" className="Giasu"></img>
           )}
 
           <div className="user">
             <div className="username">
-              {this.state.name}
+              {this.state.data.userName}
             </div>
-            <img className="profile" src={boy} alt="profile" />
+            <img className="profile" src={this.state.data.profileImageUrl} alt="profile" />
             <div className="manage">
               <div>Notifications</div>
               <div>Profile</div>

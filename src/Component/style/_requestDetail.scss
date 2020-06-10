@@ -5,141 +5,6 @@
   height: auto;
   width: 100%;
 
-  // .navbar {
-  //   position: relative;
-  //   min-height: 9vh;
-  //   width: 100%;
-  //   @include neumorphism;
-  //   display: grid;
-  //   grid-template-columns: 1.5fr 7fr 1.5fr;
-  //   text-align: center;
-  //   align-items: center;
-  //   justify-content: center;
-  //   z-index: 1;
-
-  //   .menu {
-  //     display: flex;
-  //     align-items: center;
-  //     justify-content: center;
-  //     flex-direction: column;
-  //     cursor: pointer;
-  //     background-color: $back-ground;
-  //     width: 56px;
-  //     height: 56px;
-  //     border-radius: 7px;
-  //     margin-left: 10px;
-  //     &:hover {
-  //       transform: scale(0.95);
-  //     }
-
-  //     span {
-  //       box-shadow: 0px 0px 10px 0px rgba(240, 128, 128, 0.3);
-  //       width: 28px;
-  //       height: 2.8px;
-  //       border-radius: 20px;
-  //       margin: 3px 0px 3px 0px;
-  //       transition: margin 0.7s cubic-bezier(0.79, 0.21, 0.06, 0.81),
-  //         transform 0.4s cubic-bezier(0.79, 0.21, 0.06, 0.81);
-  //       background-color: #000000;
-  //     }
-  //   }
-
-  //   .Giasu {
-  //     font-size: 36px;
-  //     font-weight: 500;
-  //     @include text-color;
-  //     background-image: linear-gradient(
-  //       to right,
-  //       #36d1dc 35%,
-  //       #00c2e7 40%,
-  //       #00b1ef 45%,
-  //       #0c9def 50%,
-  //       #5b86e5 55%
-  //     );
-  //     letter-spacing: 1.5px;
-  //     // cursor: pointer;
-  //   }
-
-  //   .user {
-  //     height: 100%;
-  //     // position: relative;
-  //     display: flex;
-  //     align-items: center;
-  //     margin-right: 2vw;
-  //     cursor: pointer;
-  //     justify-self: end;
-
-  //     &:hover {
-  //       .manage {
-  //         display: inline;
-  //       }
-  //     }
-
-  //     .username {
-  //       margin-right: 1vw;
-  //       font-size: 20px;
-  //     }
-
-  //     .profile {
-  //       height: 42px;
-  //       width: 42px;
-  //       padding: 5px;
-  //       margin: 2px;
-  //       margin-right: 25px;
-  //       border: 1px solid none;
-  //       border-radius: 50%;
-  //       background: $back-ground;
-  //       box-shadow: 0px 0px 0px 0px #fff9, 0px 0px 0px 0px #fff9,
-  //         0px 0px 0px 0px #0001, 0px 0px 0px 0px #0001,
-  //         inset -2px -2px 3px 0px #fff9, inset -2px -2px 4px 0px #fff9,
-  //         inset 2px 2px 3px 0px #0003, inset 2px 2px 4px 0px #0001;
-  //     }
-
-  //     .manage {
-  //       z-index: 3;
-  //       display: none;
-  //       position: absolute;
-  //       top: 100%;
-  //       right: 55px;
-  //       width: 180px;
-  //       text-align: start;
-  //       border-radius: 0 0 8px 8px;
-  //       box-shadow: -2px -2px 2px 0px #fff9, -1px -1px 2px 0px #fff9,
-  //         7px 7px 20px 0px #0002, 4px 4px 5px 0px #0001,
-  //         inset 0px 0px 0px 0px #fff9, inset 0px 0px 0px 0px #0001,
-  //         inset 0px 0px 0px 0px #fff9, inset 0px 0px 0px 0px #0001;
-
-  //       div {
-  //         background: none;
-  //         margin-bottom: 10px;
-  //         padding: 10px;
-  //         padding-left: 25px;
-
-  //         &:hover {
-  //           // background: $grey-text;
-  //           background: linear-gradient(
-  //             to top right,
-  //             #36d1dc,
-  //             #00c2e7,
-  //             #00b1ef,
-  //             #0c9def,
-  //             #5b86e5
-  //           );
-  //         }
-  //       }
-  //       a {
-  //         color: #000000;
-  //         text-decoration: none;
-  //       }
-
-  //       .logout {
-  //         margin-bottom: 0;
-  //         border-radius: 0 0 8px 8px;
-  //       }
-  //     }
-  //   }
-  // }
-
   .body {
     position: relative;
     display: grid;
@@ -163,7 +28,7 @@
         border-radius: 7px;
         display: grid;
         grid-template-columns: 0.2fr 1fr;
-        transition: all 0.3s ease;
+        transition: all 0.3s ease, box-shadow 0.5s ease-in-out;
         padding: 5px;
         font-size: 14px;
 
@@ -217,7 +82,7 @@
 
         // transition: /* all 0.5s ease-in-out, */ visibility 2s ease-in-out 3s, opacity 3.5s linear ;
 
-        transition: all 0.3s ease-in-out, opacity 0.5s ease-in-out,
+        transition: all 0.5s ease-in-out, opacity 0.5s ease-in-out,
           visibility 0.5s ease-in-out;
         span,
         .header {
@@ -249,12 +114,11 @@
             position: absolute;
             opacity: 0;
             visibility: hidden;
-            
           }
 
           .school-name {
             margin: 0;
-            
+
             transition: 0.3s ease-in-out;
           }
 
@@ -360,19 +224,18 @@
 
         .icon {
           padding: 10px;
-          height: 20px;
-          width: 20px;
-          color: $grey-text;
+          height: 30px;
+          width: 30px;
+          color: #000000;
           border-radius: 5px;
-          box-shadow: -3px -3px 10px 0px #fff9, -2px -2px 2px 0px #fff9,
-            3px 3px 10px 0px #0002, 2px 2px 2px 0px #0001,
-            inset 0px 0px 0px 0px #fff9, inset 0px 0px 0px 0px #0001,
-            inset 0px 0px 0px 0px #fff9, inset 0px 0px 0px 0px #0001;
-          transition: all 0.3s ease-out;
+
+          transition: all 0.3s ease-out, box-shadow 0.4s ease-in-out;
 
           &:hover {
-            color: #000000;
-            border: red;
+            box-shadow: -3px -3px 10px 0px #fff9, -2px -2px 2px 0px #fff9,
+              3px 3px 10px 0px #0002, 2px 2px 2px 0px #0001,
+              inset 0px 0px 0px 0px #fff9, inset 0px 0px 0px 0px #0001,
+              inset 0px 0px 0px 0px #fff9, inset 0px 0px 0px 0px #0001;
           }
 
           &:active {

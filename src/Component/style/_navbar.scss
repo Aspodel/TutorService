@@ -14,7 +14,6 @@
 
   .menu {
     display: flex;
-    // align-items: center;
     justify-content: center;
     flex-direction: column;
     cursor: pointer;
@@ -29,18 +28,22 @@
       font-size: 32px;
     }
 
+    background: none;
   }
 
   .Giasu {
     position: relative;
-    font-size: 36px;
-    font-weight: 500;
+    // font-size: 36px;
+    height: 80px;
+    width: 70px;
+    // font-weight: 500;
     @include text-color;
     letter-spacing: 1.5px;
     cursor: pointer;
-    text-align: center;
-    vertical-align: middle;
-    line-height: 9vh;
+    justify-self: center;
+    align-self: center;
+    margin-top: 10px !important;
+    
   }
 
   .search {
@@ -109,9 +112,9 @@
     }
 
     .profile {
-      height: 42px;
-      width: 42px;
-      padding: 5px;
+      height: 58px;
+      width: 58px;
+      padding: 7px;
       margin: 2px;
       margin-right: 25px;
       border: 1px solid none;

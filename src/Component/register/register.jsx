@@ -22,14 +22,30 @@ class Register extends Component {
       "November",
       "December",
     ],
+    
   };
 
-  componentDidMount() {
+  async componentDidMount() {
     document.title = "Gia Sư | Register";
+
+    const [firstResponse, secondResponse] = await Promise.all([
+      axios.get("/api/VietNamLocation/CitiesList"),
+      axios.get(``)
+    ]);
+  
+    // Make third request using responses from the first two
+    const thirdResponse = await axios.get('https://maps.googleapis.com/maps/api/directions/json?origin=place_id:' + firstResponse.data.results.place_id + '&destination=place_id:' + secondResponse.data.results.place_id + '&key=' + 'API-KEY-HIDDEN');
+  
+    // Update state once with all 3 responses
+    this.setState({
+      CityList: firstResponse.data,
+      DistrictList: secondResponse.data,
+      SchoolList: thirdResponse.data,
+    });
   }
 
   pageUp = () => {
-    // this.setState({ page: this.state.page + 1 });
+    this.setState({ page: this.state.page + 1 });
     document.getElementById("next").disabled = true;
     setTimeout('document.getElementById("next").disabled=false;', 700);
 
@@ -353,7 +369,7 @@ class Register extends Component {
                   list="data"
                 />
                 <datalist id="data">
-                  <select>
+                  <select >
                     {this.state.define_months.map((months) => (
                       <option key={months} value={months} />
                     ))}
