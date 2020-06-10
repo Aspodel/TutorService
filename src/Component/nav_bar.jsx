@@ -3,13 +3,30 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faSearch, faBars } from "@fortawesome/free-solid-svg-icons";
 import boy from "./image/boy.png";
 import Menu from "./menu";
+import axios from "axios";
 
 class NavBar extends Component {
-  state = { isClicked: false };
+  state = { isClicked: false, name: "" };
+
+  componentDidMount() {
+    axios
+      .get("api/LoginRegister/GetUserInfo", {
+        headers: { Authorization: `Bearer ${this.props.token}` },
+      })
+      .then((result) => {
+        this.setState({ name: result.data.userName });
+        // console.log(result.data.userName);
+        // console.log(this.state.name);
+      });
+  }
 
   callBack = (childData) => {
     this.setState({ isClicked: childData });
   };
+
+  // logOut = (child) =>{
+  //   this.setState({isLogin: child});
+  // }
 
   render() {
     return (
@@ -38,8 +55,7 @@ class NavBar extends Component {
 
           <div className="user">
             <div className="username">
-              {/* {location.state.name} */}
-              Hihi Haha
+              {this.state.name}
             </div>
             <img className="profile" src={boy} alt="profile" />
             <div className="manage">

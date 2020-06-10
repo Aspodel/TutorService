@@ -10,7 +10,7 @@ import {
 } from "@fortawesome/free-solid-svg-icons";
 
 class Menu extends Component {
-  state = {};
+  // state = {};
 
   componentDidMount() {
     const item = document.getElementsByClassName("item");
@@ -29,7 +29,7 @@ class Menu extends Component {
   };
 
   render() {
-    console.log(this.props.isClicked);
+    // console.log(this.props.isClicked);
     return (
       <div className={this.props.isClicked ? "menu-bar" : "menu-bar menuoff"}>
         <div

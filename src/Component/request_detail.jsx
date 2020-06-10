@@ -13,16 +13,13 @@ import Navbar from "./nav_bar";
 class RequestDetail extends Component {
   state = {
     detail: [],
-    subject: [],
-    owner: [],
     isLoading: true,
   };
 
   componentDidMount() {
     document.title = "Gia Sư | Request Detail";
     const { location } = this.props;
-    const apiUrl =
-      "https://localhost:44316/api/SubjectControllers/RequestDetail/";
+    const apiUrl = "/api/SubjectControllers/RequestDetail/";
 
     axios
       .get(apiUrl + location.state.id, {
@@ -31,14 +28,9 @@ class RequestDetail extends Component {
       .then((response) => {
         this.setState({
           detail: response.data,
-          subject: response.data.subject,
-          owner: response.data.owner,
           isLoading: false,
         });
-
-        console.log("api  " + this.state.detail.price);
-        // console.log(response.data.subject);
-        // console.log(this.state.detail.subject.name);
+        // console.log(this.state.detail.price);
       });
   }
 
@@ -58,14 +50,14 @@ class RequestDetail extends Component {
   }
 
   render() {
-    var { detail, subject, owner, isLoading } = this.state;
-    console.log("heiyo " + detail.price);
+    var { detail, isLoading } = this.state;
+    const { location } = this.props;
     if (isLoading) {
       return <p>Loading ...</p>;
     }
     return (
       <div className="request_detail">
-        <Navbar />
+        <Navbar token={this.props.location.state.token} />
 
         <div className="body">
           <div className="left">
@@ -89,25 +81,26 @@ class RequestDetail extends Component {
             <div className="subject-infor">
               <div className="header">Subject Information</div>
               <span>Subject:</span>
-              <span>{subject.name}</span>
+              <span>{detail.name}</span>
               <span>Department:</span>
-              <span>IT</span>
-              <span>Semester:</span>
-              <span>2019 - 2020</span>
+              <span>{detail.studyFieldName}</span>
+              <span>Group:</span>
+              <span>{detail.studyGroupName}</span>
               <span>Lecturer:</span>
-              <span>Not yet supported</span>
+              <span>{detail.teacher}</span>
             </div>
 
             <div className="school-infor">
               <div className="header">School Information</div>
+              <img className="logo" src={detail.schoolLogo} alt="" />
               <span>Name:</span>
-              <span>Not yet supported</span>
+              <span className="school-name">{detail.schoolName}</span>
               <span>Address:</span>
-              <span>Not yet supported</span>
+              <span>{detail.schoolAddress}</span>
               <span>District:</span>
-              <span>Not yet supported</span>
+              <span>{detail.schooldistrict}</span>
               <span>City:</span>
-              <span>Not yet supported</span>
+              <span>{detail.schoolcity}</span>
             </div>
           </div>
 
@@ -119,13 +112,18 @@ class RequestDetail extends Component {
             <div className="request">
               <img
                 className="profile"
-                src={owner.profileImageUrl}
+                src={location.state.profileUrlImage}
                 alt="profile"
               />
 
-              <div className="header">{"Request of " + owner.userName}</div>
+              <div className="header">
+                {"Request of " +
+                  location.state.firstname +
+                  " " +
+                  location.state.lastname}
+              </div>
 
-              <span>{detail.description}</span>
+              <span className="description">{detail.description}</span>
 
               <div className="contact">
                 <FontAwesomeIcon className="icon" icon={faPhone} />
@@ -140,9 +138,9 @@ class RequestDetail extends Component {
               <span>Address:</span>
               <span>{detail.learningAddress}</span>
               <span>District:</span>
-              <span>{detail.learningDistrict}</span>
+              <span>{detail.districtName}</span>
               <span>City:</span>
-              <span>{detail.learningCity}</span>
+              <span>{detail.cityName}</span>
             </div>
 
             <div className="bid-list">

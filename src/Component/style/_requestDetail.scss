@@ -184,6 +184,14 @@
           @include text-color;
         }
 
+        img {
+          grid-column-end: span 2;
+          height: 100px;
+          width: 100px;
+          background: $back-ground;
+          margin-top: 10px;
+        }
+
         span {
           letter-spacing: 0.5px;
           background: none;
@@ -196,6 +204,83 @@
           &:nth-child(even) {
             padding-left: 10px;
             color: $grey-text;
+          }
+        }
+      }
+
+      .school-infor {
+        height: auto;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+
+        // transition: /* all 0.5s ease-in-out, */ visibility 2s ease-in-out 3s, opacity 3.5s linear ;
+
+        transition: all 0.3s ease-in-out, opacity 0.5s ease-in-out,
+          visibility 0.5s ease-in-out;
+        span,
+        .header {
+          display: none;
+        }
+        .school-name {
+          display: inline;
+          font-size: 22px;
+          margin: 10px;
+          color: #000000 !important;
+        }
+        img {
+          visibility: visible;
+          opacity: 1;
+        }
+
+        &:hover {
+          display: grid;
+          grid-template-columns: 0.2fr 1fr;
+          justify-content: center;
+          align-items: center;
+          padding: 5px;
+          transition: all 0.3s ease-in-out, opacity 0.5s ease-in-out,
+            visibility 0.5s ease-in-out;
+          height: 150px;
+          width: 100%;
+
+          img {
+            position: absolute;
+            opacity: 0;
+            visibility: hidden;
+            
+          }
+
+          .school-name {
+            margin: 0;
+            
+            transition: 0.3s ease-in-out;
+          }
+
+          .header {
+            display: inline-block;
+          }
+
+          span,
+          .school-name {
+            font-size: 14px;
+            display: inline-block;
+            letter-spacing: 0.5px;
+            background: none;
+
+            &:nth-child(odd) {
+              margin-left: 10px;
+              justify-self: start;
+              padding-right: 10px;
+              color: $grey-text;
+            }
+
+            &:nth-child(even) {
+              justify-self: end;
+              margin-right: 10px;
+              color: #000000;
+            }
           }
         }
       }
@@ -338,13 +423,14 @@
 
         span {
           position: absolute;
-          top: 55%;
+          top: 60%;
           left: 50%;
           transform: translate(-50%, -50%);
           font-size: 14px;
           letter-spacing: 1.5px;
           color: $grey-text;
           text-align: justify;
+          background: none;
         }
 
         .contact {
@@ -356,6 +442,11 @@
 
           .icon {
             margin: 20px;
+            cursor: pointer;
+            transition: font-size 0.1s ease-in-out;
+            &:hover {
+              font-size: 19px;
+            }
           }
         }
       }

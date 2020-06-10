@@ -1,0 +1,23 @@
+.schedule {
+  position: relative;
+
+  .table {
+    position: relative;
+    display: grid;
+    grid-template-rows: 1fr 9fr;
+    grid-template-columns: 0.5fr repeat(7, 1fr);
+
+    span {
+      border: 1px solid $grey-text;
+    }
+
+    .break {
+      width: 100%;
+      position: absolute;
+      top: 5%;
+      border: none;
+      background: none;
+      border-bottom: 1px solid red;
+    }
+  }
+}

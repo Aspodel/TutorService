@@ -12,7 +12,7 @@ import Navbar from "./nav_bar";
 
 class UI extends Component {
   state = {
-    name: this.props.match.params.name,
+    // name: this.props.match.params.name,
     isLoading: true,
     requests: [],
     search: true,
@@ -37,7 +37,7 @@ class UI extends Component {
 
   async componentDidMount() {
     document.title = "Gia Sư | Subject Request";
-    const url = "https://localhost:44316/api/SubjectControllers/RequestPage/0";
+    const url = "/api/SubjectControllers/RequestPage/0";
     const response = await fetch(url);
     const data = await response.json();
 
@@ -112,19 +112,21 @@ class UI extends Component {
     /* ---------------------------------------------------------------------------------- */
 
     this.setState({ requests: data, isLoading: false });
+    // console.log(this.state.requests.profileUrlImage);
   }
 
-  getDetail = (id) => {
+  getDetail = (id, firstname, lastname, profileUrlImage) => {
     const { location } = this.props;
+    // console.log(profileUrlImage);
     this.props.history.push({
       pathname: "/requestdetail",
-      state: { id: id, token: location.state.token },
+      state: { id: id, firstname: firstname, lastname: lastname, profileUrlImage: profileUrlImage, token: location.state.token },
     });
   };
 
   render() {
     // const { match } = this.props;
-    // const { location } = this.props;
+    const { location } = this.props;
 
     // if (this.state.isLoading) {
     //   return <div>Loading...</div>;
@@ -133,6 +135,8 @@ class UI extends Component {
     // if (!this.state.requests.length) {
     //   return <div>Have an error</div>;
     // }
+    
+    // console.log(location.state.token);
 
     const defaultOptions = {
       loop: true,
@@ -145,7 +149,7 @@ class UI extends Component {
 
     return (
       <div className="UI">
-        <Navbar search={this.state.search} />
+        <Navbar search={this.state.search} token={location.state.token} />
 
         <div className="requirement-table">
           <div className="subject-requirement">
@@ -160,7 +164,7 @@ class UI extends Component {
                   <div
                     className="card"
                     key={request.requestID}
-                    onClick={() => this.getDetail(request.requestID)}
+                    onClick={() => this.getDetail(request.requestID, request.firstname, request.lastname, request.profileUrlImage)}
                   >
                     <div className="profile-img">
                       <img
@@ -171,9 +175,7 @@ class UI extends Component {
                     </div>
                     <div className="date-submitted">{request.date}</div>
                     <div className="subject">{request.sub}</div>
-                    <div className="school">
-                      {/* {request.school.schoolName} */}Waiting to fix
-                    </div>
+                    <div className="school">{request.schoolName}</div>
                     <div className="username">
                       {request.firstname + " " + request.lastname}
                     </div>

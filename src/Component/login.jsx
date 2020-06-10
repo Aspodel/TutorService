@@ -14,19 +14,18 @@ class Login extends Component {
 
   handleSubmit = async (event) => {
     event.preventDefault();
-    var apiUrl = "https://localhost:44316/api/LoginRegister/";
+    var apiUrl = "/api/LoginRegister/Login";
 
     try {
       await axios
-        .post(apiUrl + "Login", {
+        .post(apiUrl, {
           Email: document.getElementById("email").value,
           Pass: document.getElementById("password").value,
         })
         .then((response) => {
-          // console.log("api out" + this.state.noti);
-          console.log(response.statusText);
-          console.log(response.status);
-          console.log(response.data);
+          // console.log(response.statusText);
+          // console.log(response.status);
+          // console.log(response.data);
           if (response.status === 200) {
             this.props.history.push({
               pathname: "/ui",
@@ -37,7 +36,7 @@ class Login extends Component {
         });
     } catch (err) {
       console.log(err);
-      console.log("hey yo");
+      console.log("Have an error!");
       this.setState({ noti: "Incorrect username or password" });
     }
   };
@@ -82,9 +81,7 @@ class Login extends Component {
               </label>
             </div>
 
-            <div className="noti">
-              <span>{this.state.noti}</span>
-            </div>
+            <div className="noti">{this.state.noti}</div>
 
             <input className="submit" type="submit" value="Login" />
           </form>

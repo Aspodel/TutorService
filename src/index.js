@@ -22,7 +22,7 @@ const routs = (
       <Route path="/test" component={Test} />
       <Route path="/newrequest" component={CreateRequest} />
       <Route path="/requestdetail" component={RequestDetail} />
-      <Route path="/menu" component={Menu} />npm install node-sass
+      <Route path="/menu" component={Menu} />
       <Route path="/nav" component={Navbar} />
     </Switch>
   </BrowserRouter>

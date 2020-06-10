@@ -146,6 +146,7 @@ class Register extends Component {
             Username: document.getElementById("username").value,
             PhoneNumber: document.getElementById("phonenumber").value,
             Email: document.getElementById("email").value,
+            DayOfBirth: dateOfBirth,
             Gender: gender,
             Role: role,
             Age: age,
@@ -155,8 +156,13 @@ class Register extends Component {
             Address: document.getElementById("address").value,
             City: document.getElementById("city").value,
             District: document.getElementById("district").value,
-            School: document.getElementById("school").value,
-            Department: "10",
+            SchoolName: "",
+            SchoolID: "",
+            SchoolCity: "",
+            SchoolDistrict: "",
+            SchoolAddress: "",
+            StudyGroup: "",
+            StudyField: ""
           })
           .then((response) => {
             console.log(response.status);
