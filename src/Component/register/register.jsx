@@ -368,13 +368,11 @@ class Register extends Component {
                   spellCheck="false"
                   list="data"
                 />
-                <datalist id="data">
-                  <select >
+                  <datalist id="data" >
                     {this.state.define_months.map((months) => (
                       <option key={months} value={months} />
                     ))}
-                  </select>
-                </datalist>
+                  </datalist>
 
                 <label onClick={() => document.getElementById("month").focus()}>
                   Month

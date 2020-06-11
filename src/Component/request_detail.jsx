@@ -10,6 +10,9 @@ import {
 } from "@fortawesome/free-solid-svg-icons";
 import Navbar from "./nav_bar";
 
+import Lottie from "react-lottie";
+import animationData from "./image/loading.json";
+
 class RequestDetail extends Component {
   state = {
     detail: [],
@@ -44,16 +47,29 @@ class RequestDetail extends Component {
 
   formatPrice(price) {
     if (price !== null || typeof price !== "undefined") {
+      price = price * 1000;
       var p = price.toLocaleString(undefined, { maximumFractionDigits: 0 });
     }
     return p;
   }
 
   render() {
+    const defaultOptions = {
+      loop: true,
+      autoplay: true,
+      animationData: animationData,
+      rendererSettings: {
+        preserveAspectRatio: "xMidYMid slice",
+      },
+    };
     var { detail, isLoading } = this.state;
     const { location } = this.props;
     if (isLoading) {
-      return <p>Loading ...</p>;
+      return (
+        <div style={{marginTop: "15%"}} className="lottie">
+          <Lottie options={defaultOptions} height={300} width={300} />
+        </div>
+      );
     }
     return (
       <div className="request_detail">
@@ -67,9 +83,7 @@ class RequestDetail extends Component {
               <div>
                 <span>
                   <span className="price">
-                    {/* {() => this.formatPrice(detail.price)} */}
                     {this.formatPrice(detail.price)}
-                    {/* {detail.price} */}
                   </span>
                   VND/hr
                 </span>
