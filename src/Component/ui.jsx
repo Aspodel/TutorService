@@ -187,14 +187,14 @@ class UI extends Component {
           </div>
 
           <div className="my-requirement">
-            <div className="header">My Request</div>
+            <div className="header">Urgent Request</div>
             <div className="requirement-card">
-              <a href="/newrequest">
+              {/* <a href="/newrequest">
                 <div className="new-card">
                   <span>+</span>
                   Create new request
                 </div>
-              </a>
+              </a> */}
             </div>
           </div>
         </div>
