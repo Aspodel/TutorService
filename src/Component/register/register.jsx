@@ -4,43 +4,73 @@ import axios from "axios";
 
 import Lottie from "react-lottie";
 import animationData from "../image/animation.json";
+const { BlobServiceClient } = require("@azure/storage-blob");
+
+const blobServiceClient = new BlobServiceClient(
+  "DefaultEndpointsProtocol=https;AccountName=giasuprofileimagecloud;AccountKey=YPVAclmUAv1jfDRSVBoSumWlyFDNNdrcUOKN9cqSvcPbsG/YS85m5Jtr+1pvaLUCB8i6Cxb7bgoXrLn+p6Anrg==;EndpointSuffix=core.windows.net"
+);
+const containerName = "profileimagecontainer" + new Date().getTime();
+const containerClient = blobServiceClient.getContainerClient(containerName);
 
 class Register extends Component {
-  state = {
-    page: 1,
-    define_months: [
-      "January",
-      "February",
-      "March",
-      "April",
-      "May",
-      "June",
-      "July",
-      "August",
-      "September",
-      "October",
-      "November",
-      "December",
-    ],
-    
-  };
+  // state = {
+  //   // file: null,
+  //   page: 1,
+  //   define_months: [
+  //     "January",
+  //     "February",
+  //     "March",
+  //     "April",
+  //     "May",
+  //     "June",
+  //     "July",
+  //     "August",
+  //     "September",
+  //     "October",
+  //     "November",
+  //     "December",
+  //   ],
+  // };
+  constructor(props) {
+    super(props);
+    this.state = {
+      value: "",
+      imgSrc: null,
+      page: 1,
+      define_months: [
+        "January",
+        "February",
+        "March",
+        "April",
+        "May",
+        "June",
+        "July",
+        "August",
+        "September",
+        "October",
+        "November",
+        "December",
+      ],
+      cityList: [],
+      districtList: [],
+      schoolList: [],
+      majorGroupList: [],
+      majorList: [],
+    };
+    this.GetImage = this.GetImage.bind(this);
+  }
 
   async componentDidMount() {
     document.title = "Gia Sư | Register";
+    console.log("hello");
+    await axios.get("/api/VietNamLocation/CitiesList").then((response) => {
+      console.log(response.data);
+      this.setState({ cityList: response.data });
+    });
 
-    const [firstResponse, secondResponse] = await Promise.all([
-      axios.get("/api/VietNamLocation/CitiesList"),
-      axios.get(``)
-    ]);
-  
-    // Make third request using responses from the first two
-    const thirdResponse = await axios.get('https://maps.googleapis.com/maps/api/directions/json?origin=place_id:' + firstResponse.data.results.place_id + '&destination=place_id:' + secondResponse.data.results.place_id + '&key=' + 'API-KEY-HIDDEN');
-  
-    // Update state once with all 3 responses
-    this.setState({
-      CityList: firstResponse.data,
-      DistrictList: secondResponse.data,
-      SchoolList: thirdResponse.data,
+    await axios.get("/api/SubjectControllers/StudyGroupList").then((result) => {
+      console.log(result.data);
+      this.setState({ majorGroupList: result.data });
     });
   }
 
@@ -61,7 +91,7 @@ class Register extends Component {
         document.getElementById("confirm-password").value === "" ||
         document.getElementById("username").value === ""
       ) {
-        alert("Please fill out the form");
+        // alert("Please fill out the form");
       } else if (
         document.getElementById("password").value !==
         document.getElementById("confirm-password").value
@@ -81,7 +111,7 @@ class Register extends Component {
         document.getElementsByName("gender").value === null ||
         document.getElementsByName("role").value === null
       ) {
-        alert("Please fill out the form");
+        // alert("Please fill out the form");
       } else if (form2.checkValidity() === false) {
         alert("Your information not valid");
       } else {
@@ -97,6 +127,8 @@ class Register extends Component {
   };
 
   register = (event) => {
+    // var ImageUrl = this.UploadFiles();
+
     event.preventDefault();
     var apiUrl = "https://localhost:44316/api/LoginRegister/";
 
@@ -146,6 +178,24 @@ class Register extends Component {
     console.log(document.getElementById("district").value);
     console.log(document.getElementById("school").value); */
 
+    var ScName = document.getElementById("school").value;
+    console.log(ScName);
+    var ScID = "";
+    var ScCity = "";
+    var ScDistrict = "";
+    var schoolList = this.state.schoolList;
+    console.log(schoolList);
+    for (var i = 0; i <= schoolList.length; i++) {
+      if (schoolList[i].schoolName === ScName) {
+        ScID = schoolList[i].SchoolID;
+        ScCity = schoolList[i].SchoolCity;
+        ScDistrict = schoolList[i].SchoolDistrict;
+        break;
+      } else {
+        continue;
+      }
+    }
+
     // Check valid for form 3
 
     if (this.state.page === 3) {
@@ -155,13 +205,14 @@ class Register extends Component {
         document.getElementById("district").value === "" ||
         document.getElementById("city").value === ""
       ) {
-        alert("Please fill out the form");
+        // alert("Please fill out the form");
       } else {
         axios
           .post(apiUrl + "Register", {
             Username: document.getElementById("username").value,
             PhoneNumber: document.getElementById("phonenumber").value,
             Email: document.getElementById("email").value,
+            ProfileImageUrl: "ImageUrl",
             DayOfBirth: dateOfBirth,
             Gender: gender,
             Role: role,
@@ -169,16 +220,16 @@ class Register extends Component {
             FirstName: document.getElementById("first-name").value,
             LastName: document.getElementById("last-name").value,
             Pass: document.getElementById("password").value,
-            Address: document.getElementById("address").value,
-            City: document.getElementById("city").value,
-            District: document.getElementById("district").value,
-            SchoolName: "",
-            SchoolID: "",
-            SchoolCity: "",
-            SchoolDistrict: "",
-            SchoolAddress: "",
-            StudyGroup: "",
-            StudyField: ""
+            // Address: document.getElementById("address").value,
+            // City: document.getElementById("city").value,
+            // District: document.getElementById("district").value,
+            // SchoolName: "",
+            SchoolID: ScID,
+            SchoolCity: ScCity,
+            SchoolDistrict: ScDistrict,
+            // SchoolAddress: "",
+            StudyGroup: document.getElementById("majorGroup").value,
+            StudyField: document.getElementById("major").value,
           })
           .then((response) => {
             console.log(response.status);
@@ -192,7 +243,7 @@ class Register extends Component {
           });
       }
     } else {
-      alert("Have an unexpected error. Please reload page");
+      // alert("Have an unexpected error. Please reload page");
     }
   };
 
@@ -208,6 +259,89 @@ class Register extends Component {
       document.getElementById("confirm-password").style.borderColor = "#818a89";
     }
   };
+
+  GetImage(event) {
+    console.log("Where is my hope?");
+    this.setState({
+      imgSrc: URL.createObjectURL(event.target.files[0]),
+    });
+    console.log(this.state.imgSrc);
+  }
+
+  // GetDistrict = () => {
+  //   var id = document.getElementById('ListCity').value;
+  //   console.log(id);
+  //   axios.get("/api/VietNamLocation/DistrictsList/" + id).then((response) => {
+  //     console.log(response.data);
+  //     this.setState({ districtList: response.data });
+  //     console.log(this.state.districtList);
+  //   });
+  // };
+
+  GetDistrict = () => {
+    var city = document.getElementById("schoolCity").value;
+    console.log(city);
+    var id = "";
+    var cityList = this.state.cityList;
+    console.log(cityList);
+    for (var i = 0; i <= cityList.length; i++) {
+      if (cityList[i].cityName === city) {
+        id = cityList[i].cityID;
+        break;
+      } else {
+        continue;
+      }
+    }
+    console.log(id);
+    axios.get("/api/VietNamLocation/DistrictsList/" + id).then((response) => {
+      console.log(response.data);
+      this.setState({ districtList: response.data });
+    });
+  };
+
+  GetSchool = () => {
+    var district = document.getElementById("schoolDistrict").value;
+    var id = "";
+    var districtList = this.state.districtList;
+    console.log(districtList);
+    for (var i = 0; i <= districtList.length; i++) {
+      if (districtList[i].districtName === district) {
+        id = districtList[i].districtID;
+        break;
+      } else {
+        continue;
+      }
+    }
+    console.log(id);
+    axios.get("/api/SubjectControllers/SchoolList/" + id).then((response) => {
+      console.log(response.data);
+      this.setState({ schoolList: response.data });
+    });
+  };
+
+  // UploadFiles = async () => {
+  //   console.log("Uploading !!!");
+  //   const fileInput = document.getElementById("InputImage");
+  //   // var blob = "";
+  //   var account = new CloudStorageAccount(new StorageCredentials(accountName, accountKey), true);
+  //   var cloudBlobClient = account.CreateCloudBlobClient();
+  //   var container = cloudBlobClient.GetContainerReference("container-name");
+  //   // var blob = container.GetBlockBlobReference("image.png");
+  //   try {
+  //     const promises = [];
+  //     for (const file of fileInput.files) {
+  //       const blockBlobClient = containerClient.getBlockBlobClient(file.name);
+  //       promises.push(blockBlobClient.uploadBrowserData(file));
+  //       blob = container.GetBlockBlobReference("image.png");
+  //     }
+  //     var blobUrl = blob.Uri.AbsoluteUri;
+  //     await Promise.all(promises);
+  //     console.log("DONE !!!");
+  //   } catch (error) {
+  //     console.log("WTF !!! Have a big ERROR!!!");
+  //   }
+  //   return blobUrl;
+  // };
 
   render() {
     const defaultOptions = {
@@ -339,6 +473,11 @@ class Register extends Component {
                 Username
               </label>
             </div>
+
+            <div className="getImage">
+              <input type="file" id="InputImage" onChange={this.GetImage} />
+              <img className="ProImage" src={this.state.imgSrc} />
+            </div>
           </form>
 
           <form
@@ -368,11 +507,11 @@ class Register extends Component {
                   spellCheck="false"
                   list="data"
                 />
-                  <datalist id="data" >
-                    {this.state.define_months.map((months) => (
-                      <option key={months} value={months} />
-                    ))}
-                  </datalist>
+                <datalist id="data">
+                  {this.state.define_months.map((months) => (
+                    <option key={months} value={months} />
+                  ))}
+                </datalist>
 
                 <label onClick={() => document.getElementById("month").focus()}>
                   Month
@@ -451,50 +590,98 @@ class Register extends Component {
             <div className="field">
               <input
                 type="text"
-                id="school"
-                placeholder="School"
+                id="schoolCity"
+                placeholder="School's City"
                 spellCheck="false"
-              />
-              <label onClick={() => document.getElementById("school").focus()}>
-                School
-              </label>
-            </div>
-
-            <div className="field">
-              <input
-                type="text"
-                id="address"
-                placeholder="Address"
-                spellCheck="false"
-              />
-              <label onClick={() => document.getElementById("address").focus()}>
-                Address
-              </label>
-            </div>
-
-            <div className="field">
-              <input
-                type="text"
-                id="district"
-                placeholder="District"
-                spellCheck="false"
+                list="ListCity"
+                onChange={this.GetDistrict}
               />
               <label
-                onClick={() => document.getElementById("district").focus()}
+                onClick={() => document.getElementById("schoolCity").focus()}
               >
-                District
+                School's City
               </label>
+              <datalist id="ListCity">
+                {this.state.cityList.map((city) => (
+                  <option id={city.cityID}>{city.cityName}</option>
+                ))}
+              </datalist>
             </div>
 
             <div className="field">
               <input
                 type="text"
-                id="city"
-                placeholder="City"
+                id="schoolDistrict"
+                placeholder="Address"
+                spellCheck="false"
+                list="ListDistrict"
+                onChange={this.GetSchool}
+              />
+              <label
+                onClick={() =>
+                  document.getElementById("schoolDistrict").focus()
+                }
+              >
+                School's District
+              </label>
+              <datalist id="ListDistrict">
+                {this.state.districtList.map((district) => (
+                  <option id={district.districtID}>
+                    {district.districtName}
+                  </option>
+                ))}
+              </datalist>
+            </div>
+
+            <div className="field">
+              <input
+                type="text"
+                id="school"
+                placeholder="school"
+                spellCheck="false"
+                list="ListSchool"
+              />
+              <label onClick={() => document.getElementById("School").focus()}>
+                School
+              </label>
+              <datalist id="ListSchool">
+                {this.state.schoolList.map((school) => (
+                  <option id={school.schoolID}>{school.schoolName}</option>
+                ))}
+              </datalist>
+            </div>
+
+            <div className="field">
+              <input
+                type="text"
+                id="majorGroup"
+                placeholder="Major Group"
+                spellCheck="false"
+                list="ListMajorGroup"
+              />
+              <label
+                onClick={() => document.getElementById("majorGroup").focus()}
+              >
+                Major Group
+              </label>
+              <datalist id="ListMajorGroup">
+                {this.state.majorGroupList.map((majorGroup) => (
+                  <option id={majorGroup.studyGroupID}>
+                    {majorGroup.studyGroupName}
+                  </option>
+                ))}
+              </datalist>
+            </div>
+
+            <div className="field">
+              <input
+                type="text"
+                id="major"
+                placeholder="Major"
                 spellCheck="false"
               />
-              <label onClick={() => document.getElementById("city").focus()}>
-                City
+              <label onClick={() => document.getElementById("major").focus()}>
+                Major
               </label>
             </div>
           </form>

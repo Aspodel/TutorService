@@ -62,6 +62,23 @@
       margin-left: 5%;
       margin-top: 3%;
 
+      .ProImage {
+        height: 120px;
+        width: 120px;
+        object-fit: cover;
+        object-position: center;
+        border-radius: 50%;
+        padding: 9px;
+        border: none;
+        outline: none;
+        margin-left: 20%;
+
+        box-shadow: 0px 0px 0px 0px #fff9, 0px 0px 0px 0px #fff9,
+          0px 0px 0px 0px #0001, 0px 0px 0px 0px #0001,
+          inset -2px -2px 3px 0px #fff9, inset -2px -2px 4px 0px #fff9,
+          inset 2px 2px 3px 0px #0003, inset 2px 2px 4px 0px #0001;
+      }
+
       .field {
         position: relative;
         width: 100%;
@@ -203,6 +220,8 @@
           inset 0px 0px 0px 0px #fff9, inset 0px 0px 0px 0px #0001,
           inset 0px 0px 0px 0px #fff9, inset 0px 0px 0px 0px #0001;
 
+        transition: all 0.1s ease-in-out;
+
         &:active {
           border: none;
           outline: none;
@@ -238,3 +257,74 @@
     }
   }
 }
+
+.getImage {
+  margin-top: 20px;
+  position: relative;
+  // height: 100%;
+  // width: 100%;
+  display: flex;
+  align-items: center;
+
+  input {
+    width: 25%;
+    height: 40px;
+    background: none;
+    padding: 10px;
+    margin: 3px;
+    border: none;
+    outline: none;
+  }
+}
+
+#InputImage::-webkit-file-upload-button {
+  border: none;
+  outline: none;
+  color: $grey-text;
+  font-size: 14px;
+  border-radius: 8px;
+  // padding: 8px 18px;
+  cursor: pointer;
+  height: 100%;
+  width: 100%;
+  box-shadow: -4px -4px 10px 0px #fff9, -3px -3px 4px 0px #fff9,
+    4px 4px 10px 0px #0002, 3px 3px 4px 0px #0001, inset 0px 0px 0px 0px #fff9,
+    inset 0px 0px 0px 0px #0001, inset 0px 0px 0px 0px #fff9,
+    inset 0px 0px 0px 0px #0001;
+  background: none;
+  transition: all 0.1s ease-in-out, transform 0.2s ease-in-out;
+
+  &:active {
+    outline: none;
+    box-shadow: 0px 0px 0px 0px #fff9, 0px 0px 0px 0px #fff9,
+      0px 0px 0px 0px #0001, 0px 0px 0px 0px #0001,
+      inset -2px -2px 3px 0px #fff9, inset -2px -2px 4px 0px #fff9,
+      inset 2px 2px 3px 0px #0003, inset 2px 2px 4px 0px #0001;
+  }
+
+  &:hover {
+    font-size: 14px;
+    transform: scale(1.03);
+  }
+}
+// #InputImage::before {
+//   content: 'Select Image Profile';
+//   display: inline-block;
+//   background: linear-gradient(top, #f9f9f9, #e3e3e3);
+//   border: 1px solid #999;
+//   border-radius: 3px;
+//   padding: 5px 8px;
+//   outline: none;
+//   white-space: nowrap;
+//   -webkit-user-select: none;
+//   cursor: pointer;
+//   text-shadow: 1px 1px #fff;
+//   font-weight: 700;
+//   font-size: 10pt;
+// }
+// #InputImage:hover::before {
+//   border-color: black;
+// }
+// #InputImage:active::before {
+//   background: -webkit-linear-gradient(top, #e3e3e3, #f9f9f9);
+// }
