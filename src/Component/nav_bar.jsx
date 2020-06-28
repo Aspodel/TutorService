@@ -11,7 +11,7 @@ class NavBar extends Component {
 
   componentDidMount() {
     axios
-      .get("api/LoginRegister/GetUserInfo", {
+      .get("/api/LoginRegister/GetUserInfo", {
         headers: { Authorization: `Bearer ${this.props.token}` },
       })
       .then((result) => {

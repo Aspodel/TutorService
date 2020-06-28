@@ -146,13 +146,13 @@ class UI extends Component {
   getDetail = (id, firstname, lastname, profileUrlImage) => {
     const { location } = this.props;
     this.props.history.push({
-      pathname: "/requestdetail",
+      pathname: "/detailexplore",
       state: {
         id: id,
         firstname: firstname,
         lastname: lastname,
         profileUrlImage: profileUrlImage,
-        token: location.state.token,
+        // token: location.state.token,
       },
     });
   };
@@ -288,7 +288,7 @@ class UI extends Component {
 
     return (
       <div className="UI">
-        <Navbar search={this.state.search} token={location.state.token} />
+        {/* <Navbar search={this.state.search} token={location.state.token} /> */}
 
         <div className="requirement-table">
           <div className="subject-requirement">

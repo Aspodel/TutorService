@@ -12,7 +12,7 @@
     left: 50%;
     transform: translate(-50%, -50%);
     height: 80%;
-    width: 30%;
+    width: 550px;
     border-radius: 5%;
     @include neumorphism;
 
@@ -107,7 +107,7 @@
         }
       }
 
-      .noti{
+      .noti {
         width: 60%;
         color: hsl(0, 100%, 63%);
         display: flex;
@@ -149,6 +149,14 @@
         color: #00c2e7;
         text-decoration: none;
       }
+    }
+  }
+}
+
+@media (max-width: 550px){
+  .login {
+    .box {
+      width: 95%;
     }
   }
 }

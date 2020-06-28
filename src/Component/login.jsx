@@ -88,7 +88,7 @@ class Login extends Component {
           </form>
 
           <div className="navi-register">
-            Don't have an account? <a href="/register">Sign up</a>
+            Don't have an account? <a href="/explore">Explore</a>
           </div>
         </div>
       </div>

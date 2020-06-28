@@ -12,6 +12,8 @@ import CreateRequest from "./Component/create_request";
 import RequestDetail from "./Component/request_detail";
 import Menu from "./Component/menu";
 import Navbar from "./Component/nav_bar";
+import Explore from "./Component/explore";
+import DetailExplore from "./Component/detail_explore";
 
 const routs = (
   <BrowserRouter>
@@ -24,6 +26,8 @@ const routs = (
       <Route path="/requestdetail" component={RequestDetail} />
       <Route path="/menu" component={Menu} />
       <Route path="/nav" component={Navbar} />
+      <Route path="/explore" component={Explore} />
+      <Route path="/detailexplore" component={DetailExplore} />
     </Switch>
   </BrowserRouter>
 );

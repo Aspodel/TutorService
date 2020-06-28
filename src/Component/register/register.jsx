@@ -4,13 +4,13 @@ import axios from "axios";
 
 import Lottie from "react-lottie";
 import animationData from "../image/animation.json";
-const { BlobServiceClient } = require("@azure/storage-blob");
+// const { BlobServiceClient } = require("@azure/storage-blob");
 
-const blobServiceClient = new BlobServiceClient(
-  "DefaultEndpointsProtocol=https;AccountName=giasuprofileimagecloud;AccountKey=YPVAclmUAv1jfDRSVBoSumWlyFDNNdrcUOKN9cqSvcPbsG/YS85m5Jtr+1pvaLUCB8i6Cxb7bgoXrLn+p6Anrg==;EndpointSuffix=core.windows.net"
-);
-const containerName = "profileimagecontainer" + new Date().getTime();
-const containerClient = blobServiceClient.getContainerClient(containerName);
+// const blobServiceClient = new BlobServiceClient(
+//   "DefaultEndpointsProtocol=https;AccountName=giasuprofileimagecloud;AccountKey=YPVAclmUAv1jfDRSVBoSumWlyFDNNdrcUOKN9cqSvcPbsG/YS85m5Jtr+1pvaLUCB8i6Cxb7bgoXrLn+p6Anrg==;EndpointSuffix=core.windows.net"
+// );
+// const containerName = "profileimagecontainer" + new Date().getTime();
+// const containerClient = blobServiceClient.getContainerClient(containerName);
 
 class Register extends Component {
   // state = {

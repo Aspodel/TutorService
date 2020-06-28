@@ -316,3 +316,11 @@
     }
   }
 }
+
+@media(max-width: 1000px){
+  .request_detail{
+    .body{
+      grid-template-columns: 1fr;
+    }
+  }
+}
